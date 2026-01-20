@@ -8,7 +8,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    workload-type: ci-validation
+    workload-type: ci-builds
 spec:
   containers:
   - name: jnlp
