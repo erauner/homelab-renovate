@@ -44,9 +44,9 @@ console.log('');
 
 // Show what's NOT being processed this run (if subset)
 if (selected.length < total) {
-  const notSelected = config.allRepositories.filter(r => !selected.includes(r));
+  const notSelected = config.allRepositories.filter((r) => !selected.includes(r));
   console.log(`Skipped this run (${notSelected.length} repos):`);
-  notSelected.forEach(repo => {
+  notSelected.forEach((repo) => {
     console.log(`      - ${repo}`);
   });
   console.log('');

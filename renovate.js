@@ -86,7 +86,9 @@ function getRepositories() {
   const shuffled = shuffleArray([...allRepositories]);
   const selected = shuffled.slice(0, reposPerRun);
 
-  console.log(`[renovate.js] Master branch: processing ${selected.length}/${allRepositories.length} repos (shuffled)`);
+  console.log(
+    `[renovate.js] Master branch: processing ${selected.length}/${allRepositories.length} repos (shuffled)`
+  );
   console.log(`[renovate.js] Selected: ${selected.join(', ')}`);
 
   return selected;
@@ -159,13 +161,7 @@ const packageRules = [
   // Group Kubernetes-related updates
   {
     description: 'Group Kubernetes ecosystem',
-    matchPackagePatterns: [
-      '^kubernetes',
-      '^k8s',
-      '^kubectl',
-      '^helm',
-      '^kustomize',
-    ],
+    matchPackagePatterns: ['^kubernetes', '^k8s', '^kubectl', '^helm', '^kustomize'],
     groupName: 'kubernetes-ecosystem',
   },
 
@@ -235,9 +231,7 @@ const customManagers = [
     customType: 'regex',
     description: 'Update Jenkinsfile image tags',
     fileMatch: ['^Jenkinsfile', 'Jenkinsfile$'],
-    matchStrings: [
-      "image ['\"](?<depName>[^:'\"]+):(?<currentValue>[^'\"]+)['\"]",
-    ],
+    matchStrings: ['image [\'"](?<depName>[^:\'"]+):(?<currentValue>[^\'"]+)[\'"]'],
     datasourceTemplate: 'docker',
   },
   // Talos machine config versions
@@ -245,9 +239,7 @@ const customManagers = [
     customType: 'regex',
     description: 'Update Talos versions in omni configs',
     fileMatch: ['\\.yaml$'],
-    matchStrings: [
-      'talos\\.dev/version:\\s*(?<currentValue>v[0-9.]+)',
-    ],
+    matchStrings: ['talos\\.dev/version:\\s*(?<currentValue>v[0-9.]+)'],
     depNameTemplate: 'siderolabs/talos',
     datasourceTemplate: 'github-releases',
   },
@@ -293,8 +285,7 @@ module.exports = {
   // Dashboard
   dependencyDashboard: true,
   dependencyDashboardTitle: '🤖 Renovate Dashboard',
-  dependencyDashboardHeader:
-    'This issue tracks all Renovate updates for this repository.',
+  dependencyDashboardHeader: 'This issue tracks all Renovate updates for this repository.',
   dependencyDashboardFooter:
     'Managed by [homelab-renovate](https://github.com/erauner12/homelab-renovate)',
 
