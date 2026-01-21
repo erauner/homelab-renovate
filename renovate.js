@@ -201,25 +201,33 @@ const customManagers = [
   {
     customType: 'regex',
     description: 'Update docker image tags in versions.yaml',
-    fileMatch: ['^versions\\.yaml$'],
+    fileMatch: ['^versions\.yaml$'],
     matchStrings: [
-      '#\\s*renovate:\\s*datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+(?<additionalConfig>[^\\n]*))?\\n\\s*\\w+:\\n\\s*repository:[^\\n]+\\n\\s*tag:\\s*(?<currentValue>[^\\s]+)',
+      '#\s*renovate:\s*datasource=(?<datasource>[^\s]+)\s+depName=(?<depName>[^\s]+)(?:\s+(?<additionalConfig>[^
+]*))?
+\s*\w+:
+\s*repository:[^
+]+
+\s*tag:\s*(?<currentValue>[^\s]+)',
     ],
   },
   {
     customType: 'regex',
     description: 'Update module versions in versions.yaml',
-    fileMatch: ['^versions\\.yaml$'],
+    fileMatch: ['^versions\.yaml$'],
     matchStrings: [
-      '#\\s*renovate:\\s*datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+versioning=(?<versioning>[^\\s]+))?\\n\\s*[\\w-]+:\\s*(?<currentValue>(?:pkg/)?v?[0-9][^\\s]*)',
+      '#\s*renovate:\s*datasource=(?<datasource>[^\s]+)\s+depName=(?<depName>[^\s]+)(?:\s+versioning=(?<versioning>[^\s]+))?
+\s*[\w-]+:\s*(?<currentValue>(?:pkg/)?v?[0-9][^\s]*)',
     ],
   },
   {
     customType: 'regex',
     description: 'Update CLI tool versions in versions.yaml',
-    fileMatch: ['^versions\\.yaml$'],
+    fileMatch: ['^versions\.yaml$'],
     matchStrings: [
-      '#\\s*renovate:\\s*datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)(?:\\s+extractVersion=(?<extractVersion>[^\\n]+))?\\n\\s*[\\w-]+:\\s*(?<currentValue>v[0-9][^\\s]*)',
+      '#\s*renovate:\s*datasource=(?<datasource>[^\s]+)\s+depName=(?<depName>[^\s]+)(?:\s+extractVersion=(?<extractVersion>[^
+]+))?
+\s*[\w-]+:\s*(?<currentValue>v[0-9][^\s]*)',
     ],
   },
   // Jenkinsfile image tags
@@ -234,8 +242,8 @@ const customManagers = [
   {
     customType: 'regex',
     description: 'Update Talos versions in omni configs',
-    fileMatch: ['\\.yaml$'],
-    matchStrings: ['talos\\.dev/version:\\s*(?<currentValue>v[0-9.]+)'],
+    fileMatch: ['\.yaml$'],
+    matchStrings: ['talos\.dev/version:\s*(?<currentValue>v[0-9.]+)'],
     depNameTemplate: 'siderolabs/talos',
     datasourceTemplate: 'github-releases',
   },
@@ -256,6 +264,7 @@ module.exports = {
   autodiscover: false,
   onboarding: true,
   onboardingConfig: {
+    dependencyDashboard: true,
     $schema: 'https://docs.renovatebot.com/renovate-schema.json',
     extends: ['config:recommended', ':semanticCommits'],
   },
