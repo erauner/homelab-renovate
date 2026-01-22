@@ -15,8 +15,6 @@ metadata:
   links:
     - url: https://github.com/erauner/homelab-renovate
       title: GitHub Repository
-    - url: https://jenkins.erauner.dev/job/libraries/job/homelab-renovate/
-      title: CI Pipeline
 spec:
   type: library
   lifecycle: production
